@@ -1,0 +1,15 @@
+[Unit]
+Description=VK bot
+After=syslog.target
+After=network.target
+
+[Service]
+Type=simple
+User=<username>
+WorkingDirectory=/<absolute_path_to_project_root_directory>/
+ExecStart=/<absolute_path_to_project_root_directory>/venv/bin/python3 /<absolute_path_to_project_root_directory>/backend/bot.py
+RestartSec=10
+Restart=always
+
+[Install]
+WantedBy=multi-user.target

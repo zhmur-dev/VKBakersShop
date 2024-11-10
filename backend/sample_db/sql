@@ -1,0 +1,34 @@
+CREATE TABLE category (
+  id SERIAL PRIMARY KEY NOT NULL,
+  name VARCHAR(32) NOT NULL
+);
+
+INSERT INTO category (name) VALUES ('Хлеб');
+INSERT INTO category (name) VALUES ('Пироги');
+INSERT INTO category (name) VALUES ('Сладкое');
+INSERT INTO category (name) VALUES ('Напитки');
+
+CREATE TABLE product (
+  id SERIAL PRIMARY KEY NOT NULL,
+  name VARCHAR(32) NOT NULL,
+  category_id INT NOT NULL,
+  description VARCHAR(1024),
+  picture_url VARCHAR(512),
+  CONSTRAINT fk_category
+    FOREIGN KEY (category_id) REFERENCES category (id)
+    ON DELETE CASCADE
+    ON UPDATE NO ACTION
+);
+
+INSERT INTO product (name, category_id, description, picture_url) VALUES ('Хлеб Бородинский', 1, 'Описание Хлеба Бородинского', 'backend/sample_db/photos/1.jpg');
+INSERT INTO product (name, category_id, description, picture_url) VALUES ('Батон Нарезной', 1, 'Описание Батона Нарезного', 'backend/sample_db/photos/2.jpg');
+INSERT INTO product (name, category_id, description, picture_url) VALUES ('Багет Чесночный', 1, 'Описание Багета Чесночного', 'backend/sample_db/photos/3.jpg');
+INSERT INTO product (name, category_id, description, picture_url) VALUES ('Пирог с мясом', 2, 'Описание Пирога с мясом', 'backend/sample_db/photos/1.jpg');
+INSERT INTO product (name, category_id, description, picture_url) VALUES ('Пирог с курицей и грибами', 2, 'Описание Пирога с курицей и грибами', 'backend/sample_db/photos/2.jpg');
+INSERT INTO product (name, category_id, description, picture_url) VALUES ('Пирог с капустой', 2, 'Описание Пирога с капустой', 'backend/sample_db/photos/3.jpg');
+INSERT INTO product (name, category_id, description, picture_url) VALUES ('Ватрушка с творогом', 3, 'Описание Ватрушки с творогом', 'backend/sample_db/photos/1.jpg');
+INSERT INTO product (name, category_id, description, picture_url) VALUES ('Улитка с корицей', 3, 'Описание Улитки с корицей', 'backend/sample_db/photos/2.jpg');
+INSERT INTO product (name, category_id, description, picture_url) VALUES ('Ягодное лукошко', 3, 'Описание Ягодного лукошка', 'backend/sample_db/photos/3.jpg');
+INSERT INTO product (name, category_id, description, picture_url) VALUES ('Компот', 4, 'Описание Компота', 'backend/sample_db/photos/1.jpg');
+INSERT INTO product (name, category_id, description, picture_url) VALUES ('Морс', 4, 'Описание Морса', 'backend/sample_db/photos/2.jpg');
+INSERT INTO product (name, category_id, description, picture_url) VALUES ('Квас', 4, 'Описание Кваса', 'backend/sample_db/photos/3.jpg');
